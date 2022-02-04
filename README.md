@@ -34,9 +34,10 @@ W: White
 Table below describes the "final" state of the rubix cube.
 Also, Each cube is painted with unique set of colors.
 
-|x  |left  |front  |right  |back  |
+|x  |   |   |   |   |
 |---|---|---|---|---|
 |Top|   |YYY<br>YYY<br>YYY|   |   |
+|   |left  |front  |right  |back  |
 |Sides|RRR<br>RRR<br>RRR|GGG<br>GGG<br>GGG|OOO<br>OOO<br>OOO|BBB<br>BBB<br>BBB|
 |Bottom|   |WWW<br>WWW<br>WWW|   |   |
 
@@ -50,8 +51,16 @@ L - left, R- Right, T - Top, B - Bottom, F - front, K - Back
 |FTR   |GYO     |
 |LTK   |RYB     |
 |RTK   |OYB     |
-|BLF   |RGW     |
-|BRF   |W
+|------|--------|
+|LFB   |RGW     |
+|FRB   |GOW     |
+|LKB   |RBW     |
+|RKB   |OBW     |
+
+
+| cube | colors |
+|------|--------|
+|LTF   |RYG     |
 
 
 ## Cube type and possible movements
