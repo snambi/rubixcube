@@ -4,21 +4,71 @@ Rubix cube has 6 sides.
 Each side has 9 squares.
 The goal is to make each side made up of only one color.
 
+
 # Anatomy of RUBIX cube
 
-The cube is made of 26 smaller cubes. There are 3 types of cubes.
+The cube is made of 26 smaller cubes.
 
-* Corner cubes
-* Edge cubes
-* Center cubes
+## Types of smaller cubes
+
+There are 3 types of cubes.
+
+* Corner cubes - have 3 sides exposed
+* Edge cubes - have 2 sides exposed
+* Center cubes - have 1 side exposed
+
+## Colors of the Rubix cube
+
+Let us assume that the 6 six sides of the Rubix cube are painted with unique colors.
+The six unique colors are as follows,
+
+Y: Yellow
+R: Red
+G: Green
+O: Orange
+B: Blue
+W: White
+
+## Unique colors of 26 cubes
+
+Table below describes the "final" state of the rubix cube.
+Also, Each cube is painted with unique set of colors.
+
+|x  |left  |front  |right  |back  |
+|---|---|---|---|---|
+|Top|   |YYY<br>YYY<br>YYY|   |   |
+|Sides|RRR<br>RRR<br>RRR|GGG<br>GGG<br>GGG|OOO<br>OOO<br>OOO|BBB<br>BBB<br>BBB|
+|Bottom|   |WWW<br>WWW<br>WWW|   |   |
+
+### Colors of corner cubes
+
+L - left, R- Right, T - Top, B - Bottom, F - front, K - Back
+
+| cube | colors |
+|------|--------|
+|LTF   |RYG     |
+|FTR   |GYO     |
+|LTK   |RYB     |
+|RTK   |OYB     |
+|BLF   |RGW     |
+|BRF   |W
+
+
+## Cube type and possible movements
 
 Each type of cube can only move in certain direction. 
 Movements in all directions are not possible.
 
-# Cube type 
 
-| Cube Type  | Movement        | Sides exposed |
-|------------|-----------------|---------------|
-| Corner     | 3 other corners | 3             |
-| Edge       | 6 other edges   | 2             | 
- | center     | 4 centers      | 1             |
+| Cube Type  | Possible Movement   | Sides exposed |
+|------------|---------------------|---------------|
+| Corner     | to 3 other corners  | 3             |
+| Edge       | to 6 other edges    | 2             | 
+| center     | to 4 centers        | 1             |
+
+
+# 
+
+
+
+
