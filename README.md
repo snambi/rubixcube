@@ -45,22 +45,60 @@ Also, Each cube is painted with unique set of colors.
 
 L - left, R- Right, T - Top, B - Bottom, F - front, K - Back
 
+**Corner Cubes**
+
 | cube | colors |
 |------|--------|
 |LTF   |RYG     |
 |FTR   |GYO     |
 |LTK   |RYB     |
 |RTK   |OYB     |
-|------|--------|
+|||
 |LFB   |RGW     |
 |FRB   |GOW     |
 |LKB   |RBW     |
 |RKB   |OBW     |
 
+**Edge Cubes**
 
 | cube | colors |
 |------|--------|
-|LTF   |RYG     |
+|LT    |RY      |
+|FT    |GY      |
+|RT    |OY      |
+|KT    |BY      |
+|LB    |RW      |
+|FB    |GW      |
+|RB    |OW      |
+|KB    |BW      |
+|      |        |
+|LF    |RG      |
+|FR    |GO      |
+|RK    |OB      |
+|KL    |BR      |
+
+**Center Cubes**
+
+| cube | colors |
+|------|--------|
+|L    |R      |
+|F    |G      |
+|R    |O      |
+|K    |B      |
+|T    |Y      |
+|B    |W      |
+
+## Impossible Color combinations
+
+Based on the above table, certain combination of colors are not possible.
+For example, there can never be RGO, RWO, WGY, WOY, GOB etc.
+Basically, colors from opposite sides cannot be combined.
+Same goes for edges that are opposite to each other.
+e.g., There cannot be RO, GB and YW.
+
+## Movement of sides
+
+As we see from the above table, many colors  are locked, to the side of corner and edge cubes. These color combinations cannot move independently.
 
 
 ## Cube type and possible movements
