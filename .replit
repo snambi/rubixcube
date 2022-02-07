@@ -3,3 +3,5 @@ run = ["mvn", "compile exec:java"]
 
 # The default file opened in the editor.
 entrypoint = "src/main/java/org/github/snambi/CornerCube.java"
+
+language = "java"
