@@ -114,7 +114,9 @@ Movements in all directions are not possible.
 | center     | to 4 centers        | 1             |
 
 
-# 
+# Validation of color combinations
+
+
 
 
 
