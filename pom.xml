@@ -56,6 +56,14 @@
           <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <mainClass>org.github.snambi.Rubix</mainClass>
+        </configuration>
+      </plugin>
 
       <!-- Allows the example to be run via 'mvn camel:run' -->
       <plugin>
