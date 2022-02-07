@@ -22,12 +22,15 @@ There are 3 types of cubes.
 Let us assume that the 6 six sides of the Rubix cube are painted with unique colors.
 The six unique colors are as follows,
 
-Y: Yellow
-R: Red
-G: Green
-O: Orange
-B: Blue
-W: White
+|    | color |
+|----|-------|
+| Y  | Yellow|
+| R  | Red   |
+| G  | Green |
+| O  | Orange|
+| B  | Blue  |
+| W  | White |
+
 
 ## Unique colors of 26 cubes
 

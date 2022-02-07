@@ -35,6 +35,14 @@ public abstract class AbstractCube {
         }
     }
 
+    public int getSize() {
+        return size;
+    }
+
+    public void addNeighbour(AbstractCube cube ){
+
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
