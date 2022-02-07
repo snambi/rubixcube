@@ -1,8 +1,6 @@
 package org.github.snambi;
 
-import java.util.ArrayList;
-
-public class CenterCube extends Cube{
+public class CenterCube extends AbstractCube {
     public CenterCube(char[] clrs){
         super(1, clrs);
     }

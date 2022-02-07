@@ -2,12 +2,12 @@ package org.github.snambi;
 
 import java.util.ArrayList;
 
-public abstract class  Cube {
+public abstract class AbstractCube {
 
     protected int size;
     protected ArrayList<Color> colors = new ArrayList<>(3);
 
-    public Cube(int size, char[] clrs){
+    public AbstractCube(int size, char[] clrs){
 
         if(size <1 || size > 3 ){
             throw new IllegalArgumentException("size cannot be less than 1 or greater 3");

@@ -1,8 +1,6 @@
 package org.github.snambi;
 
-import java.util.ArrayList;
-
-public class EdgeCube extends Cube{
+public class EdgeCube extends AbstractCube {
 
     public EdgeCube(char[] clrs){
         super(2, clrs);
