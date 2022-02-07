@@ -24,14 +24,34 @@ public enum Color {
     private String color;
 
     Color(final String value) {
-        if(Arrays.stream(Color.values()).anyMatch(c -> c.equals(value.toUpperCase())) ) {
-            this.color = value;
-        }else{
-            throw new IllegalArgumentException( value + " is not a valid color");
-        }
+        this.color =value;
     }
 
-    Color(final char color){
+    public static boolean isValid(char color){
+        //System.out.println(String.valueOf(Color.values()));
+        for( Color c: Color.values()){
+            if( c.name().equals(String.valueOf(color)) ){
+                return true;
+            }
+        }
+        return false;
+    }
 
+    public static Color get(char input){
+        Color result = null;
+
+        for( Color c: Color.values()){
+            if( c.name().equals(String.valueOf(input)) ){
+                result = c;
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Color{" +
+                "color='" + color + '\'' +
+                '}';
     }
 }
