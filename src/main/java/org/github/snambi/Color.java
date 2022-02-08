@@ -50,8 +50,6 @@ public enum Color {
 
     @Override
     public String toString() {
-        return "Color{" +
-                "color='" + color + '\'' +
-                '}';
+        return  this.name();
     }
 }
