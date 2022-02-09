@@ -10,10 +10,10 @@ public class RubixSideTest {
     @Test
     public void createSide(){
 
-       System.out.println(System.getProperties().get("java.class.path"));
+       //System.out.println(System.getProperties().get("java.class.path"));
 
         try {
-            var side = RubixSide.readFile("side-1.txt");
+            var side = RubixSide.readFromFile("side-1.txt");
 
             System.out.println(side);
         } catch (IOException | URISyntaxException e) {

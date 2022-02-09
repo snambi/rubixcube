@@ -1,68 +1,48 @@
 package org.github.snambi;
 
+import java.io.IOException;
+import java.lang.instrument.IllegalClassFormatException;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Represents a Rubix Cube
  *
  */
-public class Rubix {
-
-    private RubixSide side1;
-    private RubixSide side2;
-    private RubixSide side3;
-    private RubixSide side4;
-    private RubixSide side5;
-    private RubixSide side6;
+public record Rubix( RubixSide side1, RubixSide side2, RubixSide side3,
+                     RubixSide side4, RubixSide side5, RubixSide side6) {
 
     public static void main(String... args) {
         System.out.println("Hello World");
     }
 
-    public RubixSide getSide1() {
-        return side1;
-    }
+    public static Rubix readFromFile( String filename )
+            throws URISyntaxException, IOException, IllegalClassFormatException {
 
-    public void setSide1(RubixSide side1) {
-        this.side1 = side1;
-    }
+        List<Character> chars = RubixUtils.readFromFile(filename);
 
-    public RubixSide getSide2() {
-        return side2;
-    }
+        // construct 6 sides from the characters read from the file
+        if( chars.size() != 63){
+            throw new IllegalClassFormatException("Cube must have 63 values. Only contains "+ chars.size());
+        }
 
-    public void setSide2(RubixSide side2) {
-        this.side2 = side2;
-    }
+        // read the first 9 characters
+        List<Character> sd1 = chars.subList(0, 8);
+        RubixSide s1 = new RubixSide( sd1.get(0), sd1.get(1), sd1.get(2),
+                sd1.get(3), sd1.get(4), sd1.get(5),
+                sd1.get(6), sd1.get(7), sd1.get(8));
 
-    public RubixSide getSide3() {
-        return side3;
-    }
 
-    public void setSide3(RubixSide side3) {
-        this.side3 = side3;
-    }
+        // Read the next 4 sides
+        List<Character> sd2 = new ArrayList<>();
+        List<Character> sd3 = new ArrayList<>();
+        List<Character> sd4 = new ArrayList<>();
+        List<Character> sd5 = new ArrayList<>();
+        for( int i=9; i<54 ; i++ ){
 
-    public RubixSide getSide4() {
-        return side4;
-    }
-
-    public void setSide4(RubixSide side4) {
-        this.side4 = side4;
-    }
-
-    public RubixSide getSide5() {
-        return side5;
-    }
-
-    public void setSide5(RubixSide side5) {
-        this.side5 = side5;
-    }
-
-    public RubixSide getSide6() {
-        return side6;
-    }
-
-    public void setSide6(RubixSide side6) {
-        this.side6 = side6;
+        }
+        return null;
     }
 }
 

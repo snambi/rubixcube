@@ -1,13 +1,9 @@
 package org.github.snambi;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.List;
 
 /**
  * Each side of the Rubix cube is made up of 9 indiviuals sides from the sub-cubes.
@@ -19,31 +15,9 @@ public record RubixSide( char cornerSide1, char cornerSide2, char cornerSide3, c
                          char centerSide) {
 
 
-    public static RubixSide readFile( final String fileName ) throws IOException, URISyntaxException {
+    public static RubixSide readFromFile(final String fileName ) throws IOException, URISyntaxException {
 
-        ArrayList<Character> chars = new ArrayList<>();
-
-        if(Objects.nonNull(fileName)) {
-            URL fileUrl = RubixSide.class.getClassLoader().getResource(fileName);
-
-            if( Objects.nonNull(fileUrl)){
-                Path pathToFile = Path.of(fileUrl.toURI());
-                String content = Files.readString(pathToFile);
-
-                String[] arr = content.split("\n");
-
-                for ( String a : arr) {
-                    //System.out.println(a);
-                    String[] row = a.split(" ");
-
-                    for( String r : row){
-                        if( r.length() == 1 ){
-                            chars.add( r.charAt(0) );
-                        }
-                    }
-                }
-            }
-        }
+        List<Character> chars = RubixUtils.readFromFile(fileName);
 
         RubixSide side = new RubixSide(chars.get(0), chars.get(1), chars.get(2),
                                         chars.get(3), chars.get(4), chars.get(5),
