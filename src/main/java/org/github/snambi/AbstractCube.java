@@ -8,8 +8,15 @@ public abstract class AbstractCube {
     private Color side1;
     private Color side2;
     private Color side3;
+    private int x;
+    private int y;
+    private int z;
 
     public AbstractCube(int size, char[] clrs){
+        this(size, clrs, 0,0,0);
+    }
+
+    public AbstractCube(int size, char[] clrs, int x, int y, int z){
 
         validateInputs(size, clrs);
 
@@ -25,6 +32,16 @@ public abstract class AbstractCube {
         }
         if(size == 3){
             side3 = Color.get(clrs[2]);
+        }
+
+        if( ( x >=0 && x < 3 ) &&
+                (y >= 0 && y < 3) &&
+                (z >= 0 && z < 3 )){
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }else{
+            throw new IllegalArgumentException("Coordinates must be 0,1 or 2. values x="+x+", y="+y+", z="+z);
         }
     }
 
