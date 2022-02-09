@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public abstract class AbstractCube {
 
     protected int size;
-    private Color side1;
-    private Color side2;
-    private Color side3;
+    private Side side1;
+    private Side side2;
+    private Side side3;
     private int x;
     private int y;
     private int z;
@@ -25,13 +25,13 @@ public abstract class AbstractCube {
 
         // set the colors
         if( size >= 1 ) {
-            side1 = Color.get(clrs[0]);
+            side1 = new Side( Color.get(clrs[0]) );
         }
         if(size >=2 ){
-            side2 = Color.get(clrs[1]);
+            side2 = new Side( Color.get(clrs[1]) );
         }
         if(size == 3){
-            side3 = Color.get(clrs[2]);
+            side3 = new Side( Color.get(clrs[2]) );
         }
 
         if( ( x >=0 && x < 3 ) &&
@@ -71,30 +71,40 @@ public abstract class AbstractCube {
         return size;
     }
 
-    public Color getSide1() {
+    public Side getSide1() {
         return side1;
     }
 
-    public void setSide1(Color s) {
+    public void setSide1(Side s) {
         this.side1 = s;
     }
 
-    public Color getSide2() {
+    public Side getSide2() {
         return side2;
     }
 
-    public void setSide2(Color s) {
+    public void setSide2(Side s) {
         this.side2 = s;
     }
 
-    public Color getSide3() {
+    public Side getSide3() {
         return side3;
     }
 
-    public void setSide3(Color s) {
+    public void setSide3(Side s) {
         this.side3 = s;
     }
 
+    public void setCoordinates(int x, int y, int z){
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
+    public int[] getCoordinates(){
+        int[] coordinates = { this.x, this.y, this.z };
+        return coordinates;
+    }
 
     @Override
     public String toString() {
@@ -102,17 +112,16 @@ public abstract class AbstractCube {
 
         sb.append("[");
         if( size >= 1){
-            sb.append(side1);
+            sb.append(side1.getColor().name());
         }
         if( size >= 2){
-            sb.append(side2);
+            sb.append(side2.getColor().name());
         }
         if( size == 3){
-            sb.append(side3);
+            sb.append(side3.getColor().name());
         }
         sb.append("]");
 
         return sb.toString();
     }
-
 }

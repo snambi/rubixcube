@@ -1,92 +1,96 @@
 package org.github.snambi;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
+public class RubixSide {
 
-/**
- * Each side of the Rubix cube is made up of 9 indiviuals sides from the sub-cubes.
- *
- * It involves, 4 sides from corner cubes, 4 from edge cubes and 1 from center cube.
- */
-public record RubixSide( char cornerSide1, char edgeSide1, char cornerSide2,
-                         char edgeSide2, char centerSide, char edgeSide3,
-                         char cornerSide3, char edgeSide4, char cornerSide4 ) {
+    private Side corner1;
+    private Side edge1;
+    private Side corner2;
+    private Side edge2;
+    private Side center;
+    private Side edge3;
+    private Side corner3;
+    private Side edge4;
+    private Side corner4;
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
+    private String name;
 
-        sb.append( this.cornerSide1());
-        sb.append(" ");
-        sb.append( this.edgeSide1());
-        sb.append(" ");
-        sb.append( this.cornerSide2());
-        sb.append("\n");
-
-        sb.append( this.edgeSide2());
-        sb.append(" ");
-        sb.append( this.centerSide());
-        sb.append(" ");
-        sb.append( this.edgeSide3());
-        sb.append("\n");
-
-        sb.append( this.cornerSide3());
-        sb.append(" ");
-        sb.append( this.edgeSide3());
-        sb.append(" ");
-        sb.append( this.cornerSide4());
-        sb.append("\n");
-
-        return sb.toString();
+    public RubixSide(String name){
+        this.name = name;
     }
 
-    public String getFirstRow(){
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(this.cornerSide1());
-        sb.append(" ");
-        sb.append(this.edgeSide1());
-        sb.append(" ");
-        sb.append(this.cornerSide2());
-
-        return sb.toString();
+    public String getName() {
+        return name;
     }
 
-    public String getSecondRow(){
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(this.edgeSide2());
-        sb.append(" ");
-        sb.append(this.centerSide());
-        sb.append(" ");
-        sb.append(this.edgeSide3());
-
-        return sb.toString();
+    public Side getCorner1() {
+        return corner1;
     }
 
-    public String getThirdRow(){
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(this.cornerSide3());
-        sb.append(" ");
-        sb.append(this.edgeSide4());
-        sb.append(" ");
-        sb.append(this.cornerSide4());
-
-        return sb.toString();
+    public void setCorner1(Side corner1) {
+        this.corner1 = corner1;
     }
 
+    public Side getEdge1() {
+        return edge1;
+    }
 
-    public static RubixSide readFromFile(final String fileName ) throws IOException, URISyntaxException {
+    public void setEdge1(Side edge1) {
+        this.edge1 = edge1;
+    }
 
-        List<Character> chars = RubixUtils.readFromFile(fileName);
+    public Side getCorner2() {
+        return corner2;
+    }
 
-        RubixSide side = new RubixSide(chars.get(0), chars.get(1), chars.get(2),
-                chars.get(3), chars.get(4), chars.get(5),
-                chars.get(6), chars.get(7), chars.get(8) );
+    public void setCorner2(Side corner2) {
+        this.corner2 = corner2;
+    }
 
-        return side;
+    public Side getEdge2() {
+        return edge2;
+    }
+
+    public void setEdge2(Side edge2) {
+        this.edge2 = edge2;
+    }
+
+    public Side getCenter() {
+        return center;
+    }
+
+    public void setCenter(Side center) {
+        this.center = center;
+    }
+
+    public Side getEdge3() {
+        return edge3;
+    }
+
+    public void setEdge3(Side edge3) {
+        this.edge3 = edge3;
+    }
+
+    public Side getCorner3() {
+        return corner3;
+    }
+
+    public void setCorner3(Side corner3) {
+        this.corner3 = corner3;
+    }
+
+    public Side getEdge4() {
+        return edge4;
+    }
+
+    public void setEdge4(Side edge4) {
+        this.edge4 = edge4;
+    }
+
+    public Side getCorner4() {
+        return corner4;
+    }
+
+    public void setCorner4(Side corner4) {
+        this.corner4 = corner4;
     }
 }
