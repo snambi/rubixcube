@@ -64,11 +64,11 @@ public class Rubix {
 
         cornerCubes.add(_020);
 
-        CornerCube _220 = new CornerCube(new char[]{s2.cornerSide4(), s3.cornerSide2(), s6.cornerSide2()});
+        CornerCube _220 = new CornerCube(new char[]{s2.cornerSide4(), s3.cornerSide3(), s6.cornerSide2()});
         _220.setCoordinates(2,2,0);
 
         side2.setCorner4(_220.getSide1());
-        side3.setCorner2(_220.getSide2());
+        side3.setCorner3(_220.getSide2());
         side6.setCorner2(_220.getSide3());
 
         cornerCubes.add(_220);
@@ -90,9 +90,9 @@ public class Rubix {
 
         cornerCubes.add(_202);
 
-        CornerCube _222 = new CornerCube( new char[]{s4.cornerSide2(), s3.cornerSide4(), s6.cornerSide4()});
+        CornerCube _222 = new CornerCube( new char[]{s4.cornerSide3(), s3.cornerSide4(), s6.cornerSide4()});
         _222.setCoordinates(2,2,2);
-        side4.setCorner2(_222.getSide1());
+        side4.setCorner3(_222.getSide1());
         side3.setCorner4(_222.getSide2());
         side6.setCorner4(_222.getSide3());
 
@@ -110,19 +110,19 @@ public class Rubix {
         // create 12 EDGE cubes.
         // these cubes may change the position (coordinates), but colors of the sides will not change.
 
-        EdgeCube _100 = new EdgeCube( new char[]{s1.edgeSide3(), s2.edgeSide1()});
+        EdgeCube _100 = new EdgeCube( new char[]{s1.edgeSide4(), s2.edgeSide1()});
         _100.setCoordinates(1,0,0);
 
-        side1.setEdge3(_100.getSide1());
+        side1.setEdge4(_100.getSide1());
         side2.setEdge1(_100.getSide2());
 
         edgeCubes.add(_100);
 
-        EdgeCube _010 = new EdgeCube( new char[]{ s2.edgeSide2(), s4.edgeSide3()});
+        EdgeCube _010 = new EdgeCube( new char[]{ s2.edgeSide2(), s5.edgeSide3()});
         _010.setCoordinates(0,1,0);
 
         side2.setEdge2(_010.getSide1());
-        side4.setEdge3(_010.getSide2());
+        side5.setEdge3(_010.getSide2());
 
         edgeCubes.add(_010);
 
@@ -130,7 +130,7 @@ public class Rubix {
         _210.setCoordinates(2,1,0);
 
         side2.setEdge3(_210.getSide1());
-        side2.setEdge2(_210.getSide2());
+        side3.setEdge2(_210.getSide2());
 
         edgeCubes.add(_210);
 
@@ -195,10 +195,10 @@ public class Rubix {
         edgeCubes.add(_201);
 
         EdgeCube _021 = new EdgeCube(new char[]{s5.edgeSide4(),s6.edgeSide2()});
-        _201.setCoordinates(2,0,1);
+        _021.setCoordinates(0,2,1);
 
-        side5.setEdge4(_201.getSide1());
-        side6.setEdge2(_201.getSide2());
+        side5.setEdge4(_021.getSide1());
+        side6.setEdge2(_021.getSide2());
 
         edgeCubes.add(_201);
 
