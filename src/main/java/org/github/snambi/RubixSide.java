@@ -1,16 +1,20 @@
 package org.github.snambi;
 
+/**
+ * A RubixCube side is made up of 9 sides from individual cubes.
+ * Each side of the cube will have one of the 6 colors.
+ */
 public class RubixSide {
 
-    private Side corner1;
-    private Side edge1;
-    private Side corner2;
-    private Side edge2;
-    private Side center;
-    private Side edge3;
-    private Side corner3;
-    private Side edge4;
-    private Side corner4;
+    private Side corner1 = new Side(Color.U);
+    private Side edge1 = new Side(Color.U);
+    private Side corner2 = new Side(Color.U);
+    private Side edge2 = new Side(Color.U);
+    private Side center = new Side(Color.U);
+    private Side edge3 = new Side(Color.U);
+    private Side corner3 = new Side(Color.U);
+    private Side edge4 = new Side(Color.U);
+    private Side corner4 = new Side(Color.U);
 
     private String name;
 
@@ -92,5 +96,72 @@ public class RubixSide {
 
     public void setCorner4(Side corner4) {
         this.corner4 = corner4;
+    }
+
+    public String getFirstRow(){
+        StringBuilder sb = new StringBuilder();
+
+        sb.append( getCorner1().getColor().name());
+        sb.append(" ");
+        sb.append( getEdge1().getColor().name());
+        sb.append(" ");
+        sb.append( getCorner2().getColor().name());
+
+        return sb.toString();
+    }
+
+    public String getSecondRow(){
+        StringBuilder sb = new StringBuilder();
+
+        sb.append( getEdge2().getColor().name());
+        sb.append(" ");
+        sb.append( getCenter().getColor().name());
+        sb.append(" ");
+        sb.append( getEdge3().getColor().name());
+
+        return sb.toString();
+    }
+
+    public String getThirdRow(){
+        StringBuilder sb = new StringBuilder();
+
+        sb.append( getCorner3().getColor().name());
+        sb.append(" ");
+        sb.append( getEdge4().getColor().name());
+        sb.append(" ");
+        sb.append( getCorner4().getColor().name());
+
+        return sb.toString();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(getName());
+        sb.append("\n");
+
+        sb.append(getCorner1().getColor().name());
+        sb.append(" ");
+        sb.append(getEdge1().getColor().name());
+        sb.append(" ");
+        sb.append(getCorner2().getColor().name());
+        sb.append("\n");
+
+        sb.append(getEdge2().getColor().name());
+        sb.append(" ");
+        sb.append(getCenter().getColor().name());
+        sb.append(" ");
+        sb.append(getEdge3().getColor().name());
+        sb.append("\n");
+
+        sb.append(getCorner3().getColor().name());
+        sb.append(" ");
+        sb.append(getEdge4().getColor().name());
+        sb.append(" ");
+        sb.append(getCorner4().getColor().name());
+        sb.append("\n");
+
+        return  sb.toString();
     }
 }

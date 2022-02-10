@@ -19,7 +19,8 @@ public enum Color {
     G("GREEN"),
     O("ORANGE"),
     B("BLUE"),
-    W("WHITE");
+    W("WHITE"),
+    U("UNKNOWN");
 
     private String color;
 

@@ -25,7 +25,10 @@ public class RubixTest {
 
             var cube = Rubix.readFromFile(fileName);
 
-            System.out.println(cube);
+            cube.printCubes();
+
+            cube.printSides();
+            //System.out.println(cube);
 
         } catch (IOException | URISyntaxException | IllegalClassFormatException e) {
             e.printStackTrace();

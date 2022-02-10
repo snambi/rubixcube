@@ -1,7 +1,7 @@
 package org.github.snambi;
 
 public class Side {
-    Color color;
+    Color color = Color.U;
 
     public Side(Color color) {
         this.color = color;

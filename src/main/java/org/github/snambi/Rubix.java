@@ -194,6 +194,55 @@ public class Rubix {
 
         edgeCubes.add(_201);
 
+        EdgeCube _021 = new EdgeCube(new char[]{s5.edgeSide4(),s6.edgeSide2()});
+        _201.setCoordinates(2,0,1);
+
+        side5.setEdge4(_201.getSide1());
+        side6.setEdge2(_201.getSide2());
+
+        edgeCubes.add(_201);
+
+        EdgeCube _221 = new EdgeCube(new char[]{s3.edgeSide4(),s6.edgeSide3()});
+        _221.setCoordinates(2,2,1);
+
+        side3.setEdge4(_221.getSide1());
+        side6.setEdge3(_221.getSide2());
+
+        edgeCubes.add(_221);
+
+        /**
+         * Add 6 center cubes.
+         */
+
+        CenterCube _110 = new CenterCube(new char[]{s2.centerSide()});
+        _110.setCoordinates(1,1,0);
+        side2.setCenter(_110.getSide1());
+        centerCubes.add(_110);
+
+        CenterCube _211 = new CenterCube(new char[]{s3.centerSide()});
+        _211.setCoordinates(2,1,1);
+        side3.setCenter(_211.getSide1());
+        centerCubes.add(_211);
+
+        CenterCube _112 = new CenterCube(new char[]{s4.centerSide()});
+        _112.setCoordinates(1,1,2);
+        side4.setCenter(_112.getSide1());
+        centerCubes.add(_112);
+
+        CenterCube _011 = new CenterCube(new char[]{s5.centerSide()});
+        _011.setCoordinates(0,1,1);
+        side5.setCenter(_011.getSide1());
+        centerCubes.add(_011);
+
+        CenterCube _101 = new CenterCube(new char[]{s1.centerSide()});
+        _101.setCoordinates(1,0,1);
+        side1.setCenter(_101.getSide1());
+        centerCubes.add(_101);
+
+        CenterCube _121 = new CenterCube(new char[]{s6.centerSide()});
+        _121.setCoordinates(1,2,1);
+        side6.setCenter(_121.getSide1());
+        centerCubes.add(_121);
     }
 
     public static Rubix readFromFile( String filename )
@@ -270,6 +319,28 @@ public class Rubix {
         return result;
     }
 
+    public void printCubes(){
+        for(CornerCube c: cornerCubes ){
+            System.out.println(c.toString());
+        }
+        for(EdgeCube e: edgeCubes){
+            System.out.println(e);
+        }
+        for(CenterCube c: centerCubes){
+            System.out.println(c);
+        }
+    }
+
+    public void printSides(){
+        System.out.println(side1);
+        System.out.println(side2);
+        System.out.println(side3);
+        System.out.println(side4);
+        System.out.println(side5);
+        System.out.println(side6);
+
+    }
+
     @Override
     public String toString() {
 
@@ -277,7 +348,7 @@ public class Rubix {
 
         sb.append( this.side1.toString());
 
-/*        sb.append( this.side2.getFirstRow());
+        sb.append( this.side2.getFirstRow());
         sb.append( " ");
         sb.append( this.side3.getFirstRow());
         sb.append( " ");
@@ -302,7 +373,7 @@ public class Rubix {
         sb.append( this.side4.getThirdRow());
         sb.append( " ");
         sb.append( this.side5.getThirdRow());
-        sb.append( "\n");*/
+        sb.append( "\n");
 
         sb.append( this.side6.toString());
 
