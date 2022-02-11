@@ -334,11 +334,17 @@ public class Rubix {
     }
 
     public void printSides(){
+        System.out.println(side1.getName());
         System.out.println(side1);
+        System.out.println(side2.getName());
         System.out.println(side2);
+        System.out.println(side3.getName());
         System.out.println(side3);
+        System.out.println(side4.getName());
         System.out.println(side4);
+        System.out.println(side5.getName());
         System.out.println(side5);
+        System.out.println(side6.getName());
         System.out.println(side6);
 
     }
@@ -349,7 +355,7 @@ public class Rubix {
         var sb = new StringBuilder();
 
         sb.append( this.side1.toString());
-
+        sb.append( "\n");
         sb.append( this.side2.getFirstRow());
         sb.append( "  ");
         sb.append( this.side3.getFirstRow());
@@ -376,7 +382,7 @@ public class Rubix {
         sb.append( "  ");
         sb.append( this.side5.getThirdRow());
         sb.append( "\n");
-
+        sb.append( "\n");
         sb.append( this.side6.toString());
 
         return sb.toString();

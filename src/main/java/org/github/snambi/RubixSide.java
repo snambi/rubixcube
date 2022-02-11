@@ -138,9 +138,6 @@ public class RubixSide {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append(getName());
-        sb.append("\n");
-
         sb.append(getCorner1().getColor().name());
         sb.append(" ");
         sb.append(getEdge1().getColor().name());
