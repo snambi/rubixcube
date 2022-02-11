@@ -1,5 +1,7 @@
 package org.github.snambi;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.lang.instrument.IllegalClassFormatException;
 import java.net.URISyntaxException;
@@ -27,11 +29,11 @@ public class Rubix {
     }
 
     public static void main(String... args) {
-        System.out.println("Hello World");
+        System.out.println("Rubix Cube");
     }
 
-    public void constructCubes(R2Side s1, R2Side s2, R2Side s3,
-                               R2Side s4, R2Side s5, R2Side s6 ){
+    public void constructCubes(@NotNull R2Side s1, @NotNull R2Side s2, @NotNull R2Side s3,
+                               @NotNull R2Side s4, @NotNull R2Side s5, @NotNull R2Side s6 ){
 
 
         // create 8 corner cubes.
