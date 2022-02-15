@@ -1,5 +1,8 @@
 package org.github.snambi;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A RubixCube side is made up of 9 sides from individual cubes.
  * Each side of the cube will have one of the 6 colors.
@@ -96,6 +99,22 @@ public class RubixSide {
 
     public void setCorner4(Side corner4) {
         this.corner4 = corner4;
+    }
+
+    public List<AbstractCube> getCubes(){
+        List<AbstractCube> cubes = new ArrayList<>();
+
+        cubes.add(getCorner1().getCube());
+        cubes.add(getEdge1().getCube());
+        cubes.add(getCorner2().getCube());
+        cubes.add(getEdge2().getCube());
+        cubes.add(getCenter().getCube());
+        cubes.add(getEdge3().getCube());
+        cubes.add(getCorner4().getCube());
+        cubes.add(getEdge4().getCube());
+        cubes.add(getCorner4().getCube());
+
+        return cubes;
     }
 
     public String getFirstRow(){

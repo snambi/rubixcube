@@ -9,8 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents a Rubix Cube
+ * Represents a Rubix Cube.
  *
+ * Once the cube is constructed, it can be rotated around all the 6 sides.
  */
 public class Rubix {
 
@@ -21,11 +22,43 @@ public class Rubix {
     private RubixSide side5 = new RubixSide("side5");
     private RubixSide side6 = new RubixSide("side6");
 
+    private List<RubixSide> sides = new ArrayList<>();
+
     private ArrayList<CornerCube> cornerCubes = new ArrayList<>();
     private ArrayList<EdgeCube> edgeCubes = new ArrayList<>();
     private ArrayList<CenterCube> centerCubes = new ArrayList<>();
 
     public Rubix(){
+        sides.add(side1);
+        sides.add(side2);
+        sides.add(side3);
+        sides.add(side4);
+        sides.add(side5);
+        sides.add(side6);
+    }
+
+    public void rotateSide(@NotNull  int side, @NotNull boolean clockwise ){
+        if( side < 1 &&  side > 6){
+            throw new IllegalArgumentException("side cannot be < 0 and > 6. side = "+ side );
+        }
+
+        // identify the cubes, attached to the "side"
+        RubixSide s = sides.get(side);
+
+        List<AbstractCube> cubes = s.getCubes();
+
+        for(AbstractCube c: cubes){
+            System.out.println(c);
+        }
+
+    }
+
+    public void rotateCenter(){
+
+    }
+
+    public List<AbstractCube> getCubes( int side ){
+        return this.sides.get(side).getCubes();
     }
 
     public static void main(String... args) {
@@ -247,14 +280,41 @@ public class Rubix {
         centerCubes.add(_121);
     }
 
+    public static Rubix constructFromText( String data)
+            throws IllegalClassFormatException {
+
+        List<Character> chars = new ArrayList<>();
+
+        String[] arr = data.split("\n");
+
+        for ( String a : arr) {
+            String[] row = a.split(" ");
+
+            for( String r : row){
+                if( r.length() == 1 ){
+                    chars.add( r.charAt(0) );
+                }
+            }
+        }
+
+        return constructFromChars(chars);
+    }
+
     public static Rubix readFromFile( String filename )
             throws URISyntaxException, IOException, IllegalClassFormatException {
 
         List<Character> chars = RubixUtils.readFromFile(filename);
 
+        return constructFromChars(chars);
+    }
+
+    public static Rubix constructFromChars( List<Character> chars )
+            throws IllegalClassFormatException {
+
         // construct 6 sides from the characters read from the file
         if( chars.size() != 54){
-            throw new IllegalClassFormatException("Cube must have 63 values. Only contains "+ chars.size());
+            throw new IllegalClassFormatException("Cube must have 63 values. Only contains "
+                    + chars.size());
         }
 
         // read the first 9 characters
@@ -269,31 +329,33 @@ public class Rubix {
         List<Character> f = rearrange( chars.subList(9,45));
 
         R2Side s2 = new R2Side(f.get(0), f.get(1), f.get(2),
-                                        f.get(3), f.get(4), f.get(5),
-                                        f.get(6), f.get(7), f.get(8));
+                f.get(3), f.get(4), f.get(5),
+                f.get(6), f.get(7), f.get(8));
 
         R2Side s3 = new R2Side(f.get(9), f.get(10), f.get(11),
-                                        f.get(12), f.get(13), f.get(14),
-                                        f.get(15), f.get(16), f.get(17));
+                f.get(12), f.get(13), f.get(14),
+                f.get(15), f.get(16), f.get(17));
 
         R2Side s4 = new R2Side(f.get(18), f.get(19), f.get(20),
-                                        f.get(21), f.get(22), f.get(23),
-                                        f.get(24), f.get(25), f.get(26));
+                f.get(21), f.get(22), f.get(23),
+                f.get(24), f.get(25), f.get(26));
 
         R2Side s5 = new R2Side(f.get(27), f.get(28), f.get(29),
-                                        f.get(30), f.get(31), f.get(32),
-                                        f.get(33), f.get(34), f.get(35));
+                f.get(30), f.get(31), f.get(32),
+                f.get(33), f.get(34), f.get(35));
 
         // read the last side
         R2Side s6 = new R2Side( chars.get(45), chars.get(46), chars.get(47),
-                                        chars.get(48), chars.get(49), chars.get(50),
-                                        chars.get(51), chars.get(52), chars.get(53));
+                chars.get(48), chars.get(49), chars.get(50),
+                chars.get(51), chars.get(52), chars.get(53));
 
         Rubix cube = new Rubix();
         cube.constructCubes(s1, s2, s3, s4, s5, s6);
 
         return cube;
     }
+
+
 
     public static List<Character> rearrange( List<Character> values ){
 
@@ -386,6 +448,34 @@ public class Rubix {
         sb.append( this.side6.toString());
 
         return sb.toString();
+    }
+
+    public RubixSide getSide1() {
+        return side1;
+    }
+
+    public RubixSide getSide2() {
+        return side2;
+    }
+
+    public RubixSide getSide3() {
+        return side3;
+    }
+
+    public RubixSide getSide4() {
+        return side4;
+    }
+
+    public RubixSide getSide5() {
+        return side5;
+    }
+
+    public RubixSide getSide6() {
+        return side6;
+    }
+
+    public List<RubixSide> getSides() {
+        return sides;
     }
 }
 

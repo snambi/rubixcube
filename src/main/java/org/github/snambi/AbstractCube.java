@@ -11,6 +11,7 @@ public abstract class AbstractCube {
     private int x;
     private int y;
     private int z;
+    protected String name;
 
     public AbstractCube(int size, char[] clrs){
         this(size, clrs, 0,0,0);
@@ -26,12 +27,15 @@ public abstract class AbstractCube {
         // set the colors
         if( size >= 1 ) {
             side1 = new Side( Color.get(clrs[0]) );
+            side1.setCube(this);
         }
         if(size >=2 ){
             side2 = new Side( Color.get(clrs[1]) );
+            side2.setCube(this);
         }
         if(size == 3){
             side3 = new Side( Color.get(clrs[2]) );
+            side3.setCube(this);
         }
 
         if( ( x >=0 && x < 3 ) &&
@@ -95,6 +99,10 @@ public abstract class AbstractCube {
         this.side3 = s;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setCoordinates(int x, int y, int z){
         this.x = x;
         this.y = y;
@@ -110,6 +118,10 @@ public abstract class AbstractCube {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
+        for( int c: getCoordinates()){
+            sb.append(c);
+            sb.append(" ");
+        }
         sb.append("[");
         if( size >= 1){
             sb.append(side1.getColor().name());
