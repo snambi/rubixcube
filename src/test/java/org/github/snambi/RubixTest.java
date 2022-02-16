@@ -61,11 +61,15 @@ public class RubixTest {
         try {
             Rubix rubix = Rubix.constructFromText(contents);
 
+            List<Side> cubeSides = rubix.getCubeSides(1);
             List<AbstractCube> cubes = rubix.getCubes(1);
 
             System.out.println("Side 1: \n"+ rubix.getSide1() );
+            for(Side c: cubeSides){
+                System.out.println(c);
+            }
             for(AbstractCube c: cubes){
-                System.out.println("Cube: "+ c);
+                System.out.println(c);
             }
         } catch (IllegalClassFormatException e) {
             e.printStackTrace();

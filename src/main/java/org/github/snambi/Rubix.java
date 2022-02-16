@@ -58,7 +58,23 @@ public class Rubix {
     }
 
     public List<AbstractCube> getCubes( int side ){
-        return this.sides.get(side).getCubes();
+
+        if( side < 1 && side > 6){
+            throw new IllegalArgumentException("Side cannot < 1 and > 6. side ="+ side );
+        }
+
+        return this.sides.get((side-1)).getCubes();
+    }
+
+    public List<Side> getCubeSides(int side){
+
+        if( side < 1 && side > 6){
+            throw new IllegalArgumentException("Side cannot < 1 and > 6. side ="+ side );
+        }
+
+        RubixSide s = this.getSides().get(side-1);
+
+        return s.getCubeSides();
     }
 
     public static void main(String... args) {

@@ -4,7 +4,7 @@ public class EdgeCube extends AbstractCube {
 
 
     public EdgeCube(char[] clrs){
-        super(2, clrs);
+        super(2, clrs, "Edge");
     }
 
     @Override

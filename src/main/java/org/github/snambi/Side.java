@@ -24,4 +24,26 @@ public class Side {
     public void setCube(AbstractCube cube) {
         this.cube = cube;
     }
+
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+
+        int L = -7;
+        String n = String.format("%" + L + "s", getCube().getName());
+
+        sb.append( n );
+        sb.append(" ");
+        for( int c: getCube().getCoordinates()){
+            sb.append(c);
+            sb.append(" ");
+        }
+
+        sb.append("[");
+        sb.append( getColor().name());
+        sb.append("]");
+
+        return sb.toString();
+    }
 }

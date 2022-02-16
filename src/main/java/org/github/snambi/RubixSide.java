@@ -110,11 +110,28 @@ public class RubixSide {
         cubes.add(getEdge2().getCube());
         cubes.add(getCenter().getCube());
         cubes.add(getEdge3().getCube());
-        cubes.add(getCorner4().getCube());
+        cubes.add(getCorner3().getCube());
         cubes.add(getEdge4().getCube());
         cubes.add(getCorner4().getCube());
 
         return cubes;
+    }
+
+    public List<Side> getCubeSides(){
+
+        List<Side> sides = new ArrayList<>();
+
+        sides.add(corner1);
+        sides.add(edge1);
+        sides.add(corner2);
+        sides.add(edge2);
+        sides.add(center);
+        sides.add(edge3);
+        sides.add(corner3);
+        sides.add(edge4);
+        sides.add(corner4);
+
+        return sides;
     }
 
     public String getFirstRow(){
