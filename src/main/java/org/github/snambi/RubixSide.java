@@ -197,4 +197,12 @@ public class RubixSide {
 
         return  sb.toString();
     }
+
+    public String getFullCubes(){
+        var sb = new StringBuilder();
+
+
+
+        return sb.toString();
+    }
 }

@@ -75,4 +75,16 @@ public class RubixTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void printdSide(){
+        try {
+            Rubix rubix = Rubix.constructFromText(contents);
+
+            rubix.printSide(1);
+
+        } catch (IllegalClassFormatException e) {
+            e.printStackTrace();
+        }
+    }
 }

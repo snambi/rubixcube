@@ -427,6 +427,18 @@ public class Rubix {
 
     }
 
+    public void printSide(int side){
+        if( side < 1 || side > 6){
+            throw new IllegalArgumentException("Side cannot be < 1 or > 6. side = "+ side);
+        }
+
+        var sb = new StringBuilder();
+
+        sb.append(this.getSides().get(side-1).toString());
+
+        System.out.println(sb);
+    }
+
     @Override
     public String toString() {
 
