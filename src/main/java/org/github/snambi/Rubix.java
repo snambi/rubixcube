@@ -372,8 +372,7 @@ public class Rubix {
     }
 
 
-
-    public static List<Character> rearrange( List<Character> values ){
+    static @NotNull List<Character> rearrange(@NotNull List<Character> values ){
 
         List<Character> result = new ArrayList<>();
 
