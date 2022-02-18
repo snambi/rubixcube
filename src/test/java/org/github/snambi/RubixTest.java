@@ -77,7 +77,7 @@ public class RubixTest {
     }
 
     @Test
-    public void printdSide(){
+    public void printSideCubes(){
         try {
             Rubix rubix = Rubix.constructFromText(contents);
 
