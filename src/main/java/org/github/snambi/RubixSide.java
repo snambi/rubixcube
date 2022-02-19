@@ -8,15 +8,6 @@ import java.util.*;
  */
 public class RubixSide {
 
-//    private Side corner1 = new Side(Color.U);
-//    private Side edge1 = new Side(Color.U);
-//    private Side corner2 = new Side(Color.U);
-//    private Side edge2 = new Side(Color.U);
-//    private Side edge3 = new Side(Color.U);
-//    private Side corner3 = new Side(Color.U);
-//    private Side edge4 = new Side(Color.U);
-//    private Side corner4 = new Side(Color.U);
-
     private Side center = new Side(Color.U);
     protected Map<Integer,Side> cornerSides = new HashMap<>();
     protected Map<Integer,Side> edgeSides = new HashMap<>();
@@ -26,15 +17,17 @@ public class RubixSide {
     public RubixSide(String name){
         this.name = name;
 
-        getCornerSides().put(1,new Side(Color.U) );
-        getCornerSides().put(2,new Side(Color.U) );
-        getCornerSides().put(3,new Side(Color.U) );
-        getCornerSides().put(4,new Side(Color.U) );
+        Side s = new Side(Color.U);
 
-        getEdgeSides().put(1, new Side(Color.U));
-        getEdgeSides().put(2, new Side(Color.U));
-        getEdgeSides().put(3, new Side(Color.U));
-        getEdgeSides().put(4, new Side(Color.U));
+        setCornerSide(1, s);
+        setCornerSide(2, s);
+        setCornerSide(3, s);
+        setCornerSide(4, s);
+
+        setEdgeSide(1, s);
+        setEdgeSide(2, s);
+        setEdgeSide(3, s);
+        setEdgeSide(4, s);
     }
 
     public String getName() {
@@ -42,35 +35,35 @@ public class RubixSide {
     }
 
     public Side getCorner1() {
-        return getCornerSides().get(1);
+        return getCornerSide(1);
     }
 
     public void setCorner1(Side corner1) {
-        this.getCornerSides().put(1,corner1 );
+        setCornerSide(1,corner1);
     }
 
     public Side getEdge1() {
-        return getEdgeSides().get(1);
+        return getEdgeSide(1);
     }
 
     public void setEdge1(Side edge1) {
-        getEdgeSides().put(1, edge1);
+        setEdgeSide(1, edge1);
     }
 
     public Side getCorner2() {
-        return getCornerSides().get(2);
+        return getCornerSide(2);
     }
 
     public void setCorner2(Side corner2) {
-        getCornerSides().put(2, corner2);
+        setCornerSide(2, corner2);
     }
 
     public Side getEdge2() {
-        return getEdgeSides().get(2);
+        return getEdgeSide(2);
     }
 
     public void setEdge2(Side edge2) {
-       getEdgeSides().put(2, edge2);
+        setEdgeSide(2, edge2);
     }
 
     public Side getCenter() {
@@ -82,43 +75,55 @@ public class RubixSide {
     }
 
     public Side getEdge3() {
-        return getEdgeSides().get(3);
+        return getEdgeSide(3);
     }
 
     public void setEdge3(Side edge3) {
-        getEdgeSides().put(3, edge3);
+        setEdgeSide(3, edge3);
     }
 
     public Side getCorner3() {
-        return getCornerSides().get(3);
+        return getCornerSide(3);
     }
 
     public void setCorner3(Side corner3) {
-       getCornerSides().put(3, corner3);
+        setCornerSide(3, corner3);
     }
 
     public Side getEdge4() {
-        return getEdgeSides().get(4);
+        return getEdgeSide(4);
     }
 
     public void setEdge4(Side edge4) {
-        getEdgeSides().put(4,edge4);
+        setEdgeSide(4, edge4);
     }
 
     public Side getCorner4() {
-        return getCornerSides().get(4);
+        return getCornerSide(4);
     }
 
     public void setCorner4(Side corner4) {
-        getCornerSides().put(4, corner4);
+        setCornerSide(4, corner4);
     }
 
-    public Map<Integer, Side> getCornerSides() {
-        return cornerSides;
+    public Side getCornerSide(int number){
+        return cornerSides.get(number);
     }
 
-    public Map<Integer, Side> getEdgeSides() {
-        return edgeSides;
+    public Side getEdgeSide( int number ){
+        return edgeSides.get(number);
+    }
+
+    public Side setCornerSide(int number, Side side){
+        cornerSides.put(number, side);
+        side.setRubixSide(this);
+        return side;
+    }
+
+    public Side setEdgeSide(int number, Side side){
+        edgeSides.put(number, side);
+        side.setRubixSide(this);
+        return side;
     }
 
     public List<AbstractCube> getCubes(){
@@ -221,6 +226,8 @@ public class RubixSide {
     public String getSideFullCubes(){
         var sb = new StringBuilder();
 
+        // collect the 4 connected sides.
+        getCornerSide(1).getCube().getSide1();
 
 
 

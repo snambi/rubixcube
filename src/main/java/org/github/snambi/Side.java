@@ -4,6 +4,7 @@ public class Side {
     Color color = Color.U;
 
     private AbstractCube cube;
+    private RubixSide rubixSide;
 
     public Side(Color color) {
         this.color = color;
@@ -23,6 +24,14 @@ public class Side {
 
     public void setCube(AbstractCube cube) {
         this.cube = cube;
+    }
+
+    public RubixSide getRubixSide() {
+        return rubixSide;
+    }
+
+    public void setRubixSide(RubixSide rubixSide) {
+        this.rubixSide = rubixSide;
     }
 
     @Override
