@@ -1,6 +1,9 @@
 package org.github.snambi;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * A RubixCube side is made up of 9 sides from individual cubes.
@@ -17,17 +20,17 @@ public class RubixSide {
     public RubixSide(String name){
         this.name = name;
 
-        Side s = new Side(Color.U);
+        Side undefined = new Side(Color.U);
 
-        setCornerSide(1, s);
-        setCornerSide(2, s);
-        setCornerSide(3, s);
-        setCornerSide(4, s);
+        setCornerSide(1, undefined);
+        setCornerSide(2, undefined);
+        setCornerSide(3, undefined);
+        setCornerSide(4, undefined);
 
-        setEdgeSide(1, s);
-        setEdgeSide(2, s);
-        setEdgeSide(3, s);
-        setEdgeSide(4, s);
+        setEdgeSide(1, undefined);
+        setEdgeSide(2, undefined);
+        setEdgeSide(3, undefined);
+        setEdgeSide(4, undefined);
     }
 
     public String getName() {

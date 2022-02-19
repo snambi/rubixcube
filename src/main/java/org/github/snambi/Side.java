@@ -1,5 +1,7 @@
 package org.github.snambi;
 
+import java.util.List;
+
 public class Side {
     Color color = Color.U;
 
@@ -32,6 +34,10 @@ public class Side {
 
     public void setRubixSide(RubixSide rubixSide) {
         this.rubixSide = rubixSide;
+    }
+
+    public List<Side> getOtherSides(){
+        return null;
     }
 
     @Override

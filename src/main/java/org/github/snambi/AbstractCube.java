@@ -1,6 +1,7 @@
 package org.github.snambi;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class AbstractCube {
 
@@ -114,6 +115,16 @@ public abstract class AbstractCube {
     public int[] getCoordinates(){
         int[] coordinates = { this.x, this.y, this.z };
         return coordinates;
+    }
+
+    public List<Side> getSides(){
+        List<Side> sides = new ArrayList<>();
+
+        sides.add(side1);
+        sides.add(side2);
+        sides.add(side3);
+
+        return sides;
     }
 
     @Override
