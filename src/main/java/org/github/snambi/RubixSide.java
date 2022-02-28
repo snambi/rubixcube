@@ -226,14 +226,131 @@ public class RubixSide {
         return  sb.toString();
     }
 
-    public String getSideFullCubes(){
+    /**
+     * Prints the full cubes of a side.
+     *
+     * Full cubes on a side would look as below,
+     * |   | G | B | W |   |
+     * | B | R | Y | O | W |
+     * | Y | O | W | B | R |
+     * | G | R | W | B | O |
+     * |   | W | R | Y |   |
+     *
+     *  Simply printing a side will look as follows,
+     *
+     * |   |   |   |   |   |
+     * |   | R | Y | O |   |
+     * |   | O | W | B |   |
+     * |   | R | W | B |   |
+     * |   |   |   |   |   |
+     *
+     * That means it prints 5 rows with 5 elements each.
+     *
+     * @return
+     */
+    public String printSideWithFullCubes(){
         var sb = new StringBuilder();
 
-        // collect the 4 connected sides.
-        getCornerSide(1).getCube().getSide1();
+
+        RubixSide topSide = otherSideOfEdgeCube(getEdge1().getCube());
+        RubixSide leftSide = otherSideOfEdgeCube(getEdge2().getCube());
+        RubixSide rightSide = otherSideOfEdgeCube(getEdge3().getCube());
+        RubixSide bottomSide = otherSideOfEdgeCube(getEdge4().getCube());
+
+        // Print the first row.
+        // first char is " ", then 3 chars and then " "
+        sb.append("  ");
+        sb.append( getConnectedSide(topSide, getCornerSide(1).getCube()).getColor().name() );
+        sb.append(" ");
+        sb.append( getConnectedSide(topSide, getEdgeSide(1).getCube()).getColor().name() );
+        sb.append(" ");
+        sb.append( getConnectedSide(topSide, getCornerSide(2).getCube()).getColor().name() );
+        sb.append("  \n");
+
+        // Print second Row : 5 chars
+        sb.append( getConnectedSide(leftSide, getCornerSide(1).getCube()).getColor().name() );
+        sb.append(" ");
+        sb.append( getConnectedSide(this, getCornerSide(1).getCube()).getColor().name() );
+        sb.append(" ");
+        sb.append( getConnectedSide(this, getEdgeSide(1).getCube()).getColor().name());
+        sb.append(" ");
+        sb.append( getConnectedSide(this, getCornerSide(2).getCube()).getColor().name() );
+        sb.append(" ");
+        sb.append( getConnectedSide(rightSide, getCornerSide(2).getCube()).getColor().name() );
+        sb.append("\n");
 
 
+        // print third row : 5 chars
+        sb.append( getConnectedSide(leftSide, getEdgeSide(2).getCube()).getColor().name() );
+        sb.append(" ");
+        sb.append( getConnectedSide(this, getEdgeSide(2).getCube()).getColor().name() );
+        sb.append(" ");
+        sb.append( getCenter().getCube().getSide1().getColor().name() );
+        sb.append(" ");
+        sb.append( getConnectedSide(this, getEdgeSide(3).getCube()).getColor().name() );
+        sb.append(" ");
+        sb.append( getConnectedSide(rightSide, getEdgeSide(3).getCube()).getColor().name()  );
+        sb.append("\n");
+
+        // Print fourth Row : 5 chars
+        sb.append( getConnectedSide(leftSide, getCornerSide(3).getCube()).getColor().name() );
+        sb.append(" ");
+        sb.append( getConnectedSide(this, getCornerSide(3).getCube()).getColor().name() );
+        sb.append(" ");
+        sb.append( getConnectedSide(this, getEdgeSide(4).getCube()).getColor().name());
+        sb.append(" ");
+        sb.append( getConnectedSide(this, getCornerSide(4).getCube()).getColor().name() );
+        sb.append(" ");
+        sb.append( getConnectedSide(rightSide, getCornerSide(4).getCube()).getColor().name() );
+        sb.append("\n");
+
+
+        // print fifth row: 3 chars
+        sb.append("  ");
+        sb.append( getConnectedSide(bottomSide, getCornerSide(3).getCube()).getColor().name() );
+        sb.append(" ");
+        sb.append( getConnectedSide(bottomSide, getEdgeSide(4).getCube()).getColor().name() );
+        sb.append(" ");
+        sb.append( getConnectedSide(bottomSide, getCornerSide(4).getCube()).getColor().name() );
+        sb.append("  \n");
 
         return sb.toString();
+    }
+
+    private Side getConnectedSide( RubixSide rubixSide, AbstractCube cube){
+        Side result=null;
+
+        if( rubixSide == null ){
+            throw new IllegalArgumentException("rubixSide is null");
+        }
+        if( cube == null ){
+            throw new IllegalArgumentException("cube is null");
+        }
+
+        for( Side s : cube.getSides() ){
+            if( s.getRubixSide() == rubixSide ){
+                result =s;
+                break;
+            }
+        }
+
+        return result;
+    }
+
+    private RubixSide otherSideOfEdgeCube( AbstractCube cube){
+
+        RubixSide other= null;
+
+        if( cube == null || cube.getSides().size()!= 2){
+            throw new IllegalArgumentException("Cube is null or not an edge cube");
+        }
+
+        for( Side side : cube.getSides() ){
+            if( side.getRubixSide() != this ){
+                other = side.getRubixSide();
+            }
+        }
+
+        return other;
     }
 }

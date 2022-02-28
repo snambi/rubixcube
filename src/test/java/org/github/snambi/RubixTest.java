@@ -81,7 +81,9 @@ public class RubixTest {
         try {
             Rubix rubix = Rubix.constructFromText(contents);
 
-            rubix.printSide(1);
+            System.out.println(rubix);
+            System.out.println("Side 1: \n"+ rubix.getSide1() );
+            System.out.println("Side 1: \n"+ rubix.getSide1().printSideWithFullCubes() );
 
         } catch (IllegalClassFormatException e) {
             e.printStackTrace();

@@ -120,9 +120,15 @@ public abstract class AbstractCube {
     public List<Side> getSides(){
         List<Side> sides = new ArrayList<>();
 
-        sides.add(side1);
-        sides.add(side2);
-        sides.add(side3);
+        if(side1 != null ){
+            sides.add(side1);
+        }
+        if( side2 != null ){
+            sides.add(side2);
+        }
+        if( side3 != null ){
+            sides.add(side3);
+        }
 
         return sides;
     }
