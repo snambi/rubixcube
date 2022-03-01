@@ -1,6 +1,7 @@
 package org.github.snambi;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Side {
     Color color = Color.U;
@@ -60,5 +61,18 @@ public class Side {
         sb.append("]");
 
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Side side = (Side) o;
+        return color == side.color && cube.equals(side.cube) && rubixSide.equals(side.rubixSide);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(color, cube, rubixSide);
     }
 }

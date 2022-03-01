@@ -7,6 +7,10 @@ public class EdgeCube extends AbstractCube {
         super(2, clrs, "Edge");
     }
 
+    public EdgeCube(char[] clrs, int[] coordinates){
+        super(2, clrs, "Edge", coordinates);
+    }
+
     @Override
     public String toString() {
         return super.toString();

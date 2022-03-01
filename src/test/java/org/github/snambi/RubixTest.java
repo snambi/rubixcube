@@ -89,4 +89,19 @@ public class RubixTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void rotateSide(){
+
+        try {
+            Rubix rubix = Rubix.constructFromText(contents);
+
+            System.out.println("Side 1: \n"+ rubix.getSide1().printSideWithFullCubes() );
+            rubix.rotateSide(1, true);
+            System.out.println("Side 1: \n"+ rubix.getSide1().printSideWithFullCubes() );
+
+        } catch (IllegalClassFormatException e) {
+            e.printStackTrace();
+        }
+    }
 }

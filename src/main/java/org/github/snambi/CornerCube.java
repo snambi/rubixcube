@@ -6,6 +6,10 @@ public class CornerCube extends AbstractCube {
         super(3, clrs, "Corner");
     }
 
+    public CornerCube(char[] clrs, int[] coordinates){
+        super(3, clrs, "Corner", coordinates);
+    }
+
     @Override
     public String toString() {
         return super.toString();

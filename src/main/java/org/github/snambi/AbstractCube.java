@@ -1,7 +1,10 @@
 package org.github.snambi;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class AbstractCube {
 
@@ -16,6 +19,10 @@ public abstract class AbstractCube {
 
     public AbstractCube(int size, char[] clrs, String name){
         this(size, clrs, name, 0,0,0);
+    }
+
+    public AbstractCube(int size, char[] clrs, String name, int[] coordinates){
+        this(size, clrs, name, coordinates[0], coordinates[1], coordinates[2] );
     }
 
     public AbstractCube(int size, char[] clrs, String name,  int x, int y, int z){
@@ -158,5 +165,66 @@ public abstract class AbstractCube {
         sb.append("]");
 
         return sb.toString();
+    }
+
+    public char[] toChars(){
+
+        List<Character> chars = new ArrayList<>();
+
+        char[] result = new char[getSize()];
+
+        if( getSize() >= 1){
+            result[0] = getSide1().getColor().name().charAt(0);
+        }
+        if( getSize() >= 2 ){
+            result[1] = getSide2().getColor().name().charAt(0);
+        }
+        if( getSize() == 3 ){
+            result[2] = getSide3().getColor().name().charAt(0);
+        }
+
+        return result;
+    }
+
+    public static AbstractCube copy(@NotNull  AbstractCube c){
+
+        AbstractCube copy = null;
+
+        // construct the cubes
+        if( c instanceof CenterCube ){
+            copy = new CenterCube( c.toChars(), c.getCoordinates());
+        }
+        if( c instanceof  CornerCube ){
+            copy = new CornerCube(c.toChars(), c.getCoordinates());
+        }
+        if(c instanceof  EdgeCube ){
+            copy = new EdgeCube(c.toChars(), c.getCoordinates());
+        }
+
+        // assign the sides.
+        if( c.getSize() >= 1 ){
+            copy.getSide1().setRubixSide( c.getSide1().getRubixSide() );
+        }
+        if( c.getSize() >= 2 ){
+            copy.getSide2().setRubixSide( c.getSide2().getRubixSide() );
+        }
+        if( c.getSize() >= 3 ){
+            copy.getSide3().setRubixSide( c.getSide3().getRubixSide() );
+        }
+
+        return copy;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AbstractCube that = (AbstractCube) o;
+        return size == that.size && x == that.x && y == that.y && z == that.z && side1.equals(that.side1) && side2.equals(that.side2) && side3.equals(that.side3) && name.equals(that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(size, side1, side2, side3, x, y, z, name);
     }
 }

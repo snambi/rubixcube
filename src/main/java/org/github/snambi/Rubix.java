@@ -45,11 +45,25 @@ public class Rubix {
         // identify the cubes, attached to the "side"
         RubixSide s = sides.get(side);
 
-        List<AbstractCube> cubes = s.getCubes();
-
-        for(AbstractCube c: cubes){
-            System.out.println(c);
+        int begin = 1;
+        int end = 4;
+        int increment=1;
+        if( clockwise == false ){
+            begin = 4;
+            end = 1;
+            increment = -1;
         }
+        // move all corner cubes
+        for( int i=begin; i <= end; i = i+increment){
+
+            AbstractCube c = s.getCornerSide(i).getCube();
+            // move the cube to next position
+
+            int next= i+increment;
+            AbstractCube nextCube = s.getCornerSide(next).getCube();
+        }
+
+        // move all edge cubes
 
     }
 
